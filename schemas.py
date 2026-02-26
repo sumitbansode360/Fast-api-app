@@ -8,6 +8,11 @@ class UserCreate(UserBase):
     # password: str = Field(min_length=8, max_length=64)
     pass
 
+class UserUpdate(BaseModel):
+    email: str | None = Field(default=None, max_length=320)
+    image_file: str | None = Field(default=None, max_length=200)
+
+
 class UserResponse(UserBase):
     model_config = ConfigDict(from_attributes=True)
 
@@ -30,3 +35,10 @@ class PostResponse(PostBase):
     date_posted: datetime
     user_id: int
     author: UserResponse
+
+class PostUpdate(PostBase):
+    pass
+
+class postUpdateParitial(BaseModel):
+    title: str | None = Field(default=None, min_length=3, max_length=50)
+    content: str | None = Field(default=None, min_length=10, max_length=200)
