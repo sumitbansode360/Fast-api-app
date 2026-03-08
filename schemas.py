@@ -5,8 +5,7 @@ class UserBase(BaseModel):
     email: EmailStr = Field(max_length=320)
 
 class UserCreate(UserBase):
-    # password: str = Field(min_length=8, max_length=64)
-    pass
+    password: str = Field(min_length=8, max_length=64)
 
 class UserUpdate(BaseModel):
     email: str | None = Field(default=None, max_length=320)
@@ -20,6 +19,12 @@ class UserResponse(UserBase):
     image_file: str | None
     image_path: str
 
+class CurrentUser(UserBase):
+    email: str
+
+class Token(BaseModel):
+    access_token: str 
+    token_type : str
 
 class PostBase(BaseModel):
     title: str = Field(min_length=3, max_length=50)
