@@ -31,7 +31,7 @@ class PostBase(BaseModel):
     content: str = Field(min_length=10, max_length=200)
 
 class PostCreate(PostBase):
-    user_id: int # temp
+    pass
 
 class PostResponse(PostBase):
     model_config = ConfigDict(from_attributes=True)
